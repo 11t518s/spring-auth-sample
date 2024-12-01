@@ -15,7 +15,7 @@ import java.util.*
 class GoogleUserInfo(
     @Id
     @Column(columnDefinition = "BINARY(16)")
-    val uid: UUID = UUID.randomUUID(),
+    val uid: UUID,
 
     @Column(nullable = false, unique = true)
     val googleId: String, // Google에서 제공하는 고유 ID

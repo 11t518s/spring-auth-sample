@@ -20,7 +20,7 @@ class JwtUtil {
      */
     fun generateToken(user: User): String {
         val claims: Claims = Jwts.claims()
-            .add("uid", user.id)
+            .add("uid", user.id.toString())
             .build()
 
         val now = Instant.now()
@@ -37,7 +37,8 @@ class JwtUtil {
 
     fun getAuthUid(token: String): UUID {
         val claims: Claims = getClaims(token)
-        return claims.get("uid", UUID::class.java) ?: throw RuntimeException("no uid field")
+        val uidString = claims.get("uid", String::class.java)?: throw RuntimeException("no uid field")
+        return UUID.fromString(uidString)
     }
 
     /**

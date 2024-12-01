@@ -6,12 +6,14 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestTemplate
 
 @Service
 class AuthGoogleService(
     private val restTemplate: RestTemplate
 ) {
+    @Transactional
     fun getUserInfo(accessToken: String): GoogleOAuth {
         val response = restTemplate.exchange(
             "https://www.googleapis.com/oauth2/v3/userinfo",

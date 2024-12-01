@@ -12,7 +12,7 @@ class User(
     @Id
     @GeneratedValue
     @Column(columnDefinition = "BINARY(16)") // MySQL에서 BINARY(16)로 저장
-    val id: UUID = UUID.randomUUID(),
+    val id: UUID? = null,
 
     val email: String? = null,
 ) : BaseTimestampEntity()
