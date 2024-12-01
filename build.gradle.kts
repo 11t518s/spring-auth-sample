@@ -21,16 +21,35 @@ repositories {
 
 dependencies {
 	implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
+	// Spring Boot Dependencies
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// Jackson (JSON 처리)
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	// Flyway (데이터베이스 마이그레이션)
+	implementation("org.flywaydb:flyway-mysql")
+
+
+	// Kotlin Reflection
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	runtimeOnly("com.mysql:mysql-connector-j")
+
+
+	// JWT (Json Web Token)
+	implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+
+	// MySQL Connector
+	runtimeOnly("mysql:mysql-connector-java:8.0.33")
+
+	// Test Dependencies
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
 }
+
 
 kotlin {
 	compilerOptions {

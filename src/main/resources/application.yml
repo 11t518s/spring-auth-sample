@@ -1,11 +1,6 @@
 spring:
-  batch:
-    jdbc:
-      initialize-schema: always
-    job:
-      enabled: true
   application:
-    name: lottery
+    name: authtest
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/db?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: mysql
@@ -17,13 +12,17 @@ spring:
     show-sql: true
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
   flyway:
+    baseline-on-migrate: true
     enabled: true
     locations: classpath:db/migration
-  redis:
-    host: localhost
-    port: 6379
+
+  data:
+    redis:
+      port: 6379
+      host: localhost
 
 server:
   port: 8080
